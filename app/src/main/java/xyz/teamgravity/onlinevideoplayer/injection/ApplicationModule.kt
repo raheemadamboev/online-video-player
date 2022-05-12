@@ -47,7 +47,7 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideVideoRepository(pexelsApi: PexelsApi): VideoRepository = VideRepositoryImp(pexelsApi)
+    fun provideVideoRepository(pager: Pager<Int, VideoDto>): VideoRepository = VideRepositoryImp(pager)
 
     @Provides
     @Singleton
