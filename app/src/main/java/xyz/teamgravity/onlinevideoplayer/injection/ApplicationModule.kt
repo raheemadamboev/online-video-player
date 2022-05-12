@@ -1,5 +1,7 @@
 package xyz.teamgravity.onlinevideoplayer.injection
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -10,6 +12,7 @@ import okhttp3.MediaType
 import retrofit2.Retrofit
 import xyz.teamgravity.onlinevideoplayer.data.remote.api.PexelsApi
 import xyz.teamgravity.onlinevideoplayer.data.remote.datasource.VideoPagingSource
+import xyz.teamgravity.onlinevideoplayer.data.remote.dto.VideoDto
 import xyz.teamgravity.onlinevideoplayer.data.repository.VideRepositoryImp
 import xyz.teamgravity.onlinevideoplayer.domain.repository.VideoRepository
 import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetPopularVideos
@@ -29,7 +32,18 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideVideoPagingSource(pixelsApi: PexelsApi): VideoPagingSource = VideoPagingSource(pixelsApi)
+    fun provideVideoPagingSource(pexelsApi: PexelsApi): VideoPagingSource = VideoPagingSource(pexelsApi)
+
+    @Provides
+    @Singleton
+    fun providePager(videoPagingSource: VideoPagingSource): Pager<Int, VideoDto> = Pager(
+        config = PagingConfig(
+            pageSize = PexelsApi.PER_PAGE,
+            maxSize = PexelsApi.MAX_SIZE,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { videoPagingSource }
+    )
 
     @Provides
     @Singleton

@@ -12,6 +12,7 @@ interface PexelsApi {
         private const val TOKEN = "563492ad6f917000010000013fa6fe0ca1ef40ff9c8a88d79e6818fc"
         const val PAGE = 1
         const val PER_PAGE = 10
+        const val MAX_SIZE = 60
         private const val MAX_DURATION = 60
     }
 
