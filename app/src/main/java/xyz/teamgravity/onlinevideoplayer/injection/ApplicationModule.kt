@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import xyz.teamgravity.onlinevideoplayer.data.remote.api.PexelsApi
 import xyz.teamgravity.onlinevideoplayer.data.repository.VideRepositoryImp
 import xyz.teamgravity.onlinevideoplayer.domain.repository.VideoRepository
+import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetPopularVideos
 import javax.inject.Singleton
 
 @Module
@@ -28,4 +29,8 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideVideoRepository(pexelsApi: PexelsApi): VideoRepository = VideRepositoryImp(pexelsApi)
+
+    @Provides
+    @Singleton
+    fun provideGetPopularVideos(videoRepository: VideoRepository): GetPopularVideos = GetPopularVideos(videoRepository)
 }
