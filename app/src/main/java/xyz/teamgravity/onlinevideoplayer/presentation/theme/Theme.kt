@@ -1,4 +1,4 @@
-package xyz.teamgravity.onlinevideoplayer.ui.theme
+package xyz.teamgravity.onlinevideoplayer.presentation.theme
 
 import android.app.Activity
 import android.os.Build

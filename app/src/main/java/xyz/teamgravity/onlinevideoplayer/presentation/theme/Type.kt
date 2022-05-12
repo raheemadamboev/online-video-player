@@ -1,4 +1,4 @@
-package xyz.teamgravity.onlinevideoplayer.ui.theme
+package xyz.teamgravity.onlinevideoplayer.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
