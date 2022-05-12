@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -64,9 +66,36 @@ dependencies {
     // preview
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
 
+    // compose activity
+    implementation 'androidx.activity:activity-compose:1.4.0'
+
+    // compose navigation
+    implementation "androidx.navigation:navigation-compose:2.5.0-beta01"
+
+    // compose icons
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+
+    // compose viewmodel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
+
+    // coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
     // lifecycle
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
 
-    // compose activity
-    implementation 'androidx.activity:activity-compose:1.4.0'
+    // hilt
+    implementation 'com.google.dagger:hilt-android:2.40.5'
+    kapt 'com.google.dagger:hilt-compiler:2.40.5'
+
+    // compose hilt navigation
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
 }
