@@ -18,7 +18,7 @@ class VideRepositoryImp(
     // Get
     ///////////////////////////////////////////////////////////////////////////
 
-    override suspend fun getPopularVideos(page: Int): Flow<PagingData<VideoModel>> {
+    override fun getPopularVideos(): Flow<PagingData<VideoModel>> {
         return pager.flow.map { data -> data.map { dto -> dto.toModel() } }
     }
 }
