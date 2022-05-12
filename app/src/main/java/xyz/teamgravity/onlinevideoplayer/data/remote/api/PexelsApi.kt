@@ -10,7 +10,8 @@ interface PexelsApi {
     companion object {
         const val BASE_URL = "https://api.pexels.com"
         private const val TOKEN = "563492ad6f917000010000013fa6fe0ca1ef40ff9c8a88d79e6818fc"
-        private const val PER_PAGE = 10
+        const val PAGE = 1
+        const val PER_PAGE = 10
         private const val MAX_DURATION = 60
     }
 
@@ -22,7 +23,7 @@ interface PexelsApi {
     suspend fun getPopularVideos(
         @Header("Authorization") token: String = TOKEN,
         @Query("page") page: Int,
-        @Query("per_page") perPage: Int = PER_PAGE,
+        @Query("per_page") perPage: Int,
         @Query("max_duration") maxDuration: Int = MAX_DURATION
     ): PopularVideosResponseDto
 }

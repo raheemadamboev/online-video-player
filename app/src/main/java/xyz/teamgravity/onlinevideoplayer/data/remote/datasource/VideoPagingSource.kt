@@ -9,16 +9,12 @@ class VideoPagingSource(
     private val api: PexelsApi
 ) : PagingSource<Int, VideoDto>() {
 
-    companion object {
-        private const val INDEX_START_PAGE = 1
-    }
-
     override fun getRefreshKey(state: PagingState<Int, VideoDto>): Int? {
         return state.anchorPosition
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, VideoDto> {
-        val page = params.key ?: INDEX_START_PAGE
+        val page = params.key ?: PexelsApi.PAGE
 
         return try {
             val response = api.getPopularVideos(
@@ -28,7 +24,7 @@ class VideoPagingSource(
 
             LoadResult.Page(
                 data = response.videos,
-                prevKey = if (page == INDEX_START_PAGE) null else page - 1,
+                prevKey = if (page == PexelsApi.PAGE) null else page - 1,
                 nextKey = if (response.videos.isEmpty()) null else page + 1
             )
         } catch (e: Exception) {
