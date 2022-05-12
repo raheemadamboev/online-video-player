@@ -15,6 +15,10 @@ interface PexelsApi {
         private const val MAX_DURATION = 60
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Get
+    ///////////////////////////////////////////////////////////////////////////
+
     @GET("/videos/popular")
     suspend fun getPopularVideos(
         @Header("Authorization") token: String = TOKEN,
