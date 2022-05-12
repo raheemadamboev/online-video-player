@@ -9,6 +9,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import retrofit2.Retrofit
 import xyz.teamgravity.onlinevideoplayer.data.remote.api.PexelsApi
+import xyz.teamgravity.onlinevideoplayer.data.remote.datasource.VideoPagingSource
 import xyz.teamgravity.onlinevideoplayer.data.repository.VideRepositoryImp
 import xyz.teamgravity.onlinevideoplayer.domain.repository.VideoRepository
 import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetPopularVideos
@@ -25,6 +26,10 @@ object ApplicationModule {
         .addConverterFactory(Json.asConverterFactory(MediaType.get("application/json")))
         .build()
         .create(PexelsApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideVideoPagingSource(pixelsApi: PexelsApi): VideoPagingSource = VideoPagingSource(pixelsApi)
 
     @Provides
     @Singleton
