@@ -14,6 +14,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import xyz.teamgravity.onlinevideoplayer.R
 import xyz.teamgravity.onlinevideoplayer.domain.model.VideoModel
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun VideoCard(
@@ -21,7 +23,7 @@ fun VideoCard(
     onClick: (url: String) -> Unit,
 ) {
     Card(
-        onClick = { onClick(video.url) },
+        onClick = { onClick(URLEncoder.encode(video.url, StandardCharsets.UTF_8.toString())) },
         modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
