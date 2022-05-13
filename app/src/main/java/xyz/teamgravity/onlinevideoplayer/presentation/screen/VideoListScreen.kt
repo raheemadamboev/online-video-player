@@ -1,6 +1,5 @@
 package xyz.teamgravity.onlinevideoplayer.presentation.screen
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
@@ -8,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -27,10 +25,7 @@ fun VideoListScreen(
     Scaffold(
         snackbarHost = {
             SnackbarHost(hostState = snackbar) { data ->
-                Snackbar(
-                    snackbarData = data,
-                    modifier = Modifier.border(2.dp, MaterialTheme.colorScheme.secondary)
-                )
+                Snackbar(snackbarData = data)
             }
         }
     ) { padding ->
@@ -59,7 +54,6 @@ fun VideoListScreen(
                     LaunchedEffect(key1 = append) {
                         snackbar.showSnackbar(append.error.message ?: "")
                     }
-
                 }
                 else -> Unit
             }

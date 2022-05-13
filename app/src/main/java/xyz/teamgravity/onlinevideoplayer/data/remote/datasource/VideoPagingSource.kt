@@ -31,6 +31,7 @@ class VideoPagingSource(
                 nextKey = if (videos.isEmpty()) null else page + 1
             )
         } catch (e: Exception) {
+            Timber.d("Exception: ${e.message}")
             LoadResult.Error(e)
         }
     }
