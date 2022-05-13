@@ -2,6 +2,9 @@
     <string name="app_name">Online Video Player</string>
 
     <!-- VideoList -->
-    <string name="error_getting_videos">Error occurred while getting popular videos!</string>
     <string name="video_name">Somehow very popular video</string>
+    <string name="videos">Videos</string>
+
+    <!-- Video -->
+    <string name="watch_video">Watch video</string>
 </resources>
