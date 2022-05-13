@@ -16,10 +16,11 @@ import xyz.teamgravity.onlinevideoplayer.domain.model.VideoModel
 
 @Composable
 fun VideoCard(
-    video: VideoModel
+    video: VideoModel,
+    onClick: (id: Int) -> Unit,
 ) {
     Card(
-        onClick = { },
+        onClick = { onClick(video.id) },
         modifier = Modifier.padding(10.dp)
     ) {
         Column(Modifier.fillMaxWidth()) {
