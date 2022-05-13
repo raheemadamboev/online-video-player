@@ -17,17 +17,17 @@ fun Navigation(
     NavHost(navController = controller, startDestination = Screen.VideoList.route) {
         composable(route = Screen.VideoList.route) {
             VideoListScreen(
-                onNavigateVideo = { id ->
-                    controller.navigate("${Screen.Video.route}?id=$id")
+                onNavigateVideo = { url ->
+                    controller.navigate("${Screen.Video.route}?url=$url")
                 }
             )
         }
         composable(
-            route = "${Screen.Video.route}?id={id}",
+            route = "${Screen.Video.route}?url={url}",
             arguments = listOf(
-                navArgument(name = "id") {
-                    type = NavType.IntType
-                    defaultValue = -1
+                navArgument(name = "url") {
+                    type = NavType.StringType
+                    defaultValue = ""
                 }
             )
         ) {

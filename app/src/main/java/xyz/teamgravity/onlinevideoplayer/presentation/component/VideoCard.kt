@@ -17,10 +17,10 @@ import xyz.teamgravity.onlinevideoplayer.domain.model.VideoModel
 @Composable
 fun VideoCard(
     video: VideoModel,
-    onClick: (id: Int) -> Unit,
+    onClick: (url: String) -> Unit,
 ) {
     Card(
-        onClick = { onClick(video.id) },
+        onClick = { onClick(video.url) },
         modifier = Modifier.padding(10.dp)
     ) {
         Column(Modifier.fillMaxWidth()) {
@@ -38,7 +38,7 @@ fun VideoCard(
             Spacer(modifier = Modifier.height(10.dp))
             Text(text = stringResource(id = R.string.video_name))
             Spacer(modifier = Modifier.height(10.dp))
-            Text(text = video.username)
+            Text(text = video.author)
         }
     }
 }
