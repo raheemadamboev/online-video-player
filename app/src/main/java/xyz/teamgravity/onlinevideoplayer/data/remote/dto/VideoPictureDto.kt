@@ -1,12 +1,9 @@
 package xyz.teamgravity.onlinevideoplayer.data.remote.dto
 
+import com.google.gson.annotations.SerializedName
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class VideoPictureDto(
-    @SerialName("id") val id: Int,
-    @SerialName("picture") val picture: String,
-    @SerialName("nr") val nr: Int
+    @SerializedName("id") val id: Int,
+    @SerializedName("picture") val picture: String,
+    @SerializedName("nr") val nr: Int
 )

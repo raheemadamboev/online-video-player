@@ -2,14 +2,12 @@ package xyz.teamgravity.onlinevideoplayer.injection
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import xyz.teamgravity.onlinevideoplayer.data.remote.api.PexelsApi
 import xyz.teamgravity.onlinevideoplayer.data.remote.datasource.VideoPagingSource
 import xyz.teamgravity.onlinevideoplayer.data.remote.dto.VideoDto
@@ -26,7 +24,7 @@ object ApplicationModule {
     @Singleton
     fun providePexelsApi(): PexelsApi = Retrofit.Builder()
         .baseUrl(PexelsApi.BASE_URL)
-        .addConverterFactory(Json.asConverterFactory(MediaType.get("application/json")))
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(PexelsApi::class.java)
 

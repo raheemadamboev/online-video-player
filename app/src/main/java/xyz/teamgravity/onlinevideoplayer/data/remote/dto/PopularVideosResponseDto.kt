@@ -1,15 +1,13 @@
 package xyz.teamgravity.onlinevideoplayer.data.remote.dto
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.google.gson.annotations.SerializedName
 
-@Serializable
 data class PopularVideosResponseDto(
-    @SerialName("videos") val videos: List<VideoDto>,
-    @SerialName("url") val url: String,
-    @SerialName("page") val page: Int,
-    @SerialName("per_page") val perPage: Int,
-    @SerialName("total_results") val totalResults: Int,
-    @SerialName("prev_page") val prevPage: String?,
-    @SerialName("next_page") val nextPage: String?
+    @SerializedName("videos") val videos: List<VideoDto>,
+    @SerializedName("url") val url: String,
+    @SerializedName("page") val page: Int,
+    @SerializedName("per_page") val perPage: Int,
+    @SerializedName("total_results") val totalResults: Int,
+    @SerializedName("prev_page") val prevPage: String?,
+    @SerializedName("next_page") val nextPage: String?
 )
