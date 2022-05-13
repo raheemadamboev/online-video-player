@@ -2,6 +2,7 @@ package xyz.teamgravity.onlinevideoplayer.presentation.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,9 +22,9 @@ fun VideoCard(
 ) {
     Card(
         onClick = { onClick(video.url) },
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
     ) {
-        Column(Modifier.fillMaxWidth()) {
+        Column(modifier = Modifier.fillMaxWidth()) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(video.image)
@@ -35,10 +36,21 @@ fun VideoCard(
                     .fillMaxWidth()
                     .height(200.dp)
             )
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(text = stringResource(id = R.string.video_name))
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(text = video.author)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.video_name),
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = video.author,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
         }
     }
 }
