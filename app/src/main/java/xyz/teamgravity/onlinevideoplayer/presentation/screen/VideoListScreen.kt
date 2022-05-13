@@ -2,7 +2,10 @@ package xyz.teamgravity.onlinevideoplayer.presentation.screen
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.*
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -11,6 +14,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import xyz.teamgravity.onlinevideoplayer.presentation.component.CenteredProgressBar
 import xyz.teamgravity.onlinevideoplayer.presentation.component.VideoCard
 import xyz.teamgravity.onlinevideoplayer.presentation.viewmodel.VideoListViewModel
 
@@ -29,14 +33,9 @@ fun VideoListScreen(
             }
         }
     ) { padding ->
-        LazyColumn(
-            modifier = Modifier.padding(padding)
-        ) {
-            if (videos.loadState.refresh == LoadState.Loading) {
-                item {
-                    CircularProgressIndicator()
-                }
-            }
+        LazyColumn(modifier = Modifier.padding(padding)) {
+            if (videos.loadState.refresh == LoadState.Loading) item { CenteredProgressBar() }
+
             items(videos) { video ->
                 video?.let {
                     VideoCard(
@@ -47,9 +46,7 @@ fun VideoListScreen(
             }
 
             when (val append = videos.loadState.append) {
-                LoadState.Loading -> item {
-                    CircularProgressIndicator()
-                }
+                LoadState.Loading -> item { CenteredProgressBar() }
                 is LoadState.Error -> item {
                     LaunchedEffect(key1 = append) {
                         snackbar.showSnackbar(append.error.message ?: "")
