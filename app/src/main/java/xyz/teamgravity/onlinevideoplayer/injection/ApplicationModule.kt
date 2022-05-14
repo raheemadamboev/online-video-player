@@ -2,12 +2,15 @@ package xyz.teamgravity.onlinevideoplayer.injection
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
+import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import xyz.teamgravity.onlinevideoplayer.data.remote.api.VideoApi
 import xyz.teamgravity.onlinevideoplayer.data.remote.datasource.VideoPagingSource
 import xyz.teamgravity.onlinevideoplayer.data.remote.dto.VideoDto
@@ -16,15 +19,22 @@ import xyz.teamgravity.onlinevideoplayer.domain.repository.VideoRepository
 import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetPopularVideos
 import javax.inject.Singleton
 
+@Suppress("JSON_FORMAT_REDUNDANT")
 @Module
 @InstallIn(SingletonComponent::class)
 object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideVideoApi(): VideoApi = Retrofit.Builder()
+    fun provideConverterFactory(): Converter.Factory = Json {
+        ignoreUnknownKeys = true
+    }.asConverterFactory("application/json".toMediaType())
+
+    @Provides
+    @Singleton
+    fun provideVideoApi(factory: Converter.Factory): VideoApi = Retrofit.Builder()
         .baseUrl(VideoApi.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(factory)
         .build()
         .create(VideoApi::class.java)
 
