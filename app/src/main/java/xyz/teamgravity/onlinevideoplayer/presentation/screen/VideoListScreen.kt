@@ -18,7 +18,7 @@ import xyz.teamgravity.onlinevideoplayer.presentation.viewmodel.VideoListViewMod
 @Composable
 fun VideoListScreen(
     viewmodel: VideoListViewModel = hiltViewModel(),
-    onNavigateVideo: (url: String) -> Unit
+    onNavigateVideo: (url: String) -> Unit,
 ) {
     val snackbar = remember { SnackbarHostState() }
     val videos = viewmodel.videos.collectAsLazyPagingItems()
@@ -38,7 +38,10 @@ fun VideoListScreen(
         LazyColumn(contentPadding = padding) {
             if (videos.loadState.refresh == LoadState.Loading) item { CenteredProgressBar() }
 
-            items(videos) { video ->
+            items(
+                items = videos,
+                key = { video -> video.id }
+            ) { video ->
                 video?.let {
                     VideoCard(
                         video = it,
