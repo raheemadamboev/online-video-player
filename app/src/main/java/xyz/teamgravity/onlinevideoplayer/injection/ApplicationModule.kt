@@ -44,12 +44,16 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun providePager(videoPagingSource: VideoPagingSource): Pager<Int, VideoDto> = Pager(
-        config = PagingConfig(
-            pageSize = VideoApi.PER_PAGE,
-            maxSize = VideoApi.MAX_SIZE,
-            enablePlaceholders = false
-        ),
+    fun providePagingConfig(): PagingConfig = PagingConfig(
+        pageSize = VideoApi.PER_PAGE,
+        maxSize = VideoApi.MAX_SIZE,
+        enablePlaceholders = false
+    )
+
+    @Provides
+    @Singleton
+    fun providePager(pagingConfig: PagingConfig, videoPagingSource: VideoPagingSource): Pager<Int, VideoDto> = Pager(
+        config = pagingConfig,
         pagingSourceFactory = { videoPagingSource }
     )
 
