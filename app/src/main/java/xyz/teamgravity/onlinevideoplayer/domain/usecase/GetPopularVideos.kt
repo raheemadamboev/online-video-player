@@ -10,6 +10,6 @@ class GetPopularVideos(
 ) {
 
     operator fun invoke(): Flow<PagingData<VideoModel>> {
-        return repository.getPopularVideos()
+        return repository.getVideos()
     }
 }

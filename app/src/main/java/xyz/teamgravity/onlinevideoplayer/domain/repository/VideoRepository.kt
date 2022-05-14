@@ -10,5 +10,5 @@ interface VideoRepository {
     // Get
     ///////////////////////////////////////////////////////////////////////////
 
-    fun getPopularVideos(): Flow<PagingData<VideoModel>>
+    fun getVideos(): Flow<PagingData<VideoModel>>
 }
