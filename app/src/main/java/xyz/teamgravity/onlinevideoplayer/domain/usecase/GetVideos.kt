@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import xyz.teamgravity.onlinevideoplayer.domain.model.VideoModel
 import xyz.teamgravity.onlinevideoplayer.domain.repository.VideoRepository
 
-class GetPopularVideos(
+class GetVideos(
     private val repository: VideoRepository
 ) {
 

@@ -7,13 +7,13 @@ import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import xyz.teamgravity.onlinevideoplayer.domain.model.VideoModel
-import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetPopularVideos
+import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetVideos
 import javax.inject.Inject
 
 @HiltViewModel
 class VideoListViewModel @Inject constructor(
-    getPopularVideos: GetPopularVideos
+    getVideos: GetVideos
 ) : ViewModel() {
 
-    val videos: Flow<PagingData<VideoModel>> = getPopularVideos().cachedIn(viewModelScope)
+    val videos: Flow<PagingData<VideoModel>> = getVideos().cachedIn(viewModelScope)
 }

@@ -16,7 +16,7 @@ import xyz.teamgravity.onlinevideoplayer.data.remote.datasource.VideoPagingSourc
 import xyz.teamgravity.onlinevideoplayer.data.remote.dto.VideoDto
 import xyz.teamgravity.onlinevideoplayer.data.repository.VideRepositoryImp
 import xyz.teamgravity.onlinevideoplayer.domain.repository.VideoRepository
-import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetPopularVideos
+import xyz.teamgravity.onlinevideoplayer.domain.usecase.GetVideos
 import javax.inject.Singleton
 
 @Suppress("JSON_FORMAT_REDUNDANT")
@@ -59,5 +59,5 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideGetPopularVideos(videoRepository: VideoRepository): GetPopularVideos = GetPopularVideos(videoRepository)
+    fun provideGetVideos(videoRepository: VideoRepository): GetVideos = GetVideos(videoRepository)
 }
