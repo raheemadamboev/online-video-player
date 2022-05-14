@@ -36,7 +36,7 @@ fun VideoListScreen(
         }
     ) { padding ->
         LazyColumn(contentPadding = padding) {
-            if (videos.loadState.refresh == LoadState.Loading) item { CenteredProgressBar() }
+            if (videos.loadState.prepend == LoadState.Loading) item { CenteredProgressBar() }
 
             items(
                 items = videos,
