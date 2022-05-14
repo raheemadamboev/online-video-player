@@ -18,7 +18,10 @@ class Main : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             OnlineVideoPlayerTheme {
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
                     Navigation()
                 }
             }
