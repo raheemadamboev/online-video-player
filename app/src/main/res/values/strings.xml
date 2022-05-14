@@ -7,4 +7,5 @@
 
     <!-- Video -->
     <string name="watch_video">Watch video</string>
+    <string name="cd_back_button">Back button</string>
 </resources>
