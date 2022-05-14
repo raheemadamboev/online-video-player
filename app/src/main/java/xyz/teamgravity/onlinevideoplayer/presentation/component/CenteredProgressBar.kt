@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 @Composable
 fun CenteredProgressBar() {
     Box(
-        modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxWidth()
     ) {
         CircularProgressIndicator()
     }

@@ -12,9 +12,12 @@ import xyz.teamgravity.onlinevideoplayer.presentation.screen.VideoScreen
 
 @Composable
 fun Navigation(
-    controller: NavHostController = rememberNavController()
+    controller: NavHostController = rememberNavController(),
 ) {
-    NavHost(navController = controller, startDestination = Screen.VideoList.route) {
+    NavHost(
+        navController = controller,
+        startDestination = Screen.VideoList.route
+    ) {
         composable(route = Screen.VideoList.route) {
             VideoListScreen(
                 onNavigateVideo = { url ->
