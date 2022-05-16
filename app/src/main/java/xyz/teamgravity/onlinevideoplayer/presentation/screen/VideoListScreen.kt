@@ -5,6 +5,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
@@ -21,19 +23,22 @@ fun VideoListScreen(
     onNavigateVideo: (url: String) -> Unit,
 ) {
     val snackbar = remember { SnackbarHostState() }
+    val scroll = remember { TopAppBarDefaults.enterAlwaysScrollBehavior() }
     val videos = viewmodel.videos.collectAsLazyPagingItems()
 
     Scaffold(
         topBar = {
             SmallTopAppBar(
-                title = { Text(text = stringResource(id = R.string.videos)) }
+                title = { Text(text = stringResource(id = R.string.videos)) },
+                scrollBehavior = scroll
             )
         },
         snackbarHost = {
             SnackbarHost(hostState = snackbar) { data ->
                 Snackbar(snackbarData = data)
             }
-        }
+        },
+        modifier = Modifier.nestedScroll(scroll.nestedScrollConnection)
     ) { padding ->
         LazyColumn(contentPadding = padding) {
             if (videos.loadState.prepend == LoadState.Loading) item { CenteredProgressBar() }
