@@ -4,6 +4,7 @@
     <!-- VideoList -->
     <string name="video_name">Somehow very popular video</string>
     <string name="videos">Videos</string>
+    <string name="cd_favourite_button">Favourite button</string>
 
     <!-- Video -->
     <string name="watch_video">Watch video</string>
