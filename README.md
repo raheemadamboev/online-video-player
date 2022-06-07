@@ -1,7 +1,8 @@
 # online-video-player
-Jetpack Compose app that plays videos over network
 
 <img align="right" width="296" height="600"  src="https://github.com/raheemadamboev/online-video-player/blob/master/banner.gif" />
+
+Jetpack Compose app that plays videos over network
 
 **Online Video Player**
 
